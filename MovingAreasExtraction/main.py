@@ -2,7 +2,8 @@
 #               LIBRARIES IMPORTS                       #
 #########################################################
 
-from FirstTests import checkDir, getImageReady, getMovingAreas
+from majorSteps import getImageReady, getMovingAreas
+from utils import checkDir
 
 import os
 from tqdm import tqdm
