@@ -1,0 +1,13 @@
+GDAL==3.4.1
+matplotlib==3.5.1
+miseval==1.2.2
+numpy==1.21.6
+numpy==1.21.5
+opencv_python==4.7.0.68
+rioxarray==0.13.3
+scikit_image==0.19.3
+torch==1.13.1
+torchmetrics==1.2.0
+torchmetrics==0.11.1
+torchvision==0.14.1
+tqdm==4.64.1

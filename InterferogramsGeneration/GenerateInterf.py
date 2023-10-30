@@ -13,17 +13,17 @@ from utils import date_sort, checkDir
 ######################################################
 
 #Path toward input images
-pathInput = ""
+pathInput = "/media/bralet/Elements/DataToProcess/DESC/TestData/Combined/Swath1/"
 #Path to the output folder to be created
-pathOutput = ""
+pathOutput = "/media/bralet/Elements/DataToProcess/DESC/TestData/Interfs_1_12/"
 #Path to the SNAP graph to be computed
-pathSNAPGraph = ""
+pathSNAPGraph = "./graphs/InterfGraphSingleSwath.xml"
 #Path to the gpt executable
-pathGPT = ""
+pathGPT = "/opt/snapSentinel/bin/gpt"
 #Swath to be computed (one by one for memory issues)
 swath = 1
 #Delay between two radar images on which to compute interferogram
-delay = 6
+delay = 12
 
 ######################################################
 #                   INITIALIZATION                   #
@@ -51,10 +51,11 @@ gptConfigParams = ["product1", "product2", "outputFile", "swath1", "swath2"]
 #                   MAIN ROUTINE                     #
 ######################################################
 
-for i in trange(0, len(liste_imgs_org)-deltat):
+for i in trange(0, len(liste_imgs_org)-deltat, deltat):
     #Configuration of user parameters
     outputName = f'{pathOutput}/ifg_IW{swath}_VV_{i}_{i+deltat}.dim'
-    userParams = [liste_imgs_org[i], liste_imgs_org[i+deltat], outputName, str(swath), str(swath)]
+    userParams = [pathInput + liste_imgs_org[i], pathInput + liste_imgs_org[i+deltat], outputName, str(swath), str(swath)]
+    print(userParams)
     
     #Prepare command line
     comParams = ""
@@ -62,7 +63,7 @@ for i in trange(0, len(liste_imgs_org)-deltat):
         comParams += f"-P{com}={userParams[c]} "
     
     #Generate interferogram
-    commandLine = f'{pathGPT} {pathSNAPGraph} comParams'
+    commandLine = f'{pathGPT} {pathSNAPGraph} {comParams}'
     os.system(commandLine)
 
 
@@ -81,7 +82,7 @@ f.write(f'Graph path: {pathSNAPGraph}\n')
 f.write("Interferograms configuration")
 f.write(f'Swath number: {swath}\n')
 f.write(f"Delay: {delay}\n")
-f.write("Corresponding Images")
+f.write("Corresponding Images: ")
 for i, img in enumerate(liste_imgs_org):
-    f.write(f"{i}: {img}")
+    f.write(f"{i}: {img} ; ")
 f.close()

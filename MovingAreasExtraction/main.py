@@ -13,20 +13,20 @@ from tqdm import tqdm
 #########################################################
 
 #Path to the folder with all Interferograms
-interfPath = ""
+interfPath = "/home/bralet/NAS/Bralet/I-SSLIDE/RawDataset/Interferograms/"
 #Path to the folder with all Shapefiles
-shpPathAll = ""
+shpPathAll = "/home/bralet/NAS/Bralet/I-SSLIDE/RawDataset/ShapeFiles/"
 #Path to a pre-computed global shapefile
-GlobshpPathAll = "" 
+GlobshpPathAll = "/home/bralet/NAS/Bralet/I-SSLIDE/RawDataset/ShapeFiles/AllInOne/" 
 #Output folder
-savePathOrig = ""
+savePathOrig = "/media/bralet/Elements/DataToProcess/DESC/TestData/ExtractMoves/"
 
 #########################################################
 #                  INITIALIZATION                       #
 #########################################################
 
 #Delays considered
-delays = [f for f in os.listdir(interfPath) if os.path.isdir(f)]
+delays = [f for f in os.listdir(interfPath) if os.path.isdir(interfPath + f)]
 
 #Individual shapefiles
 shpFiles = []
@@ -46,7 +46,7 @@ checkDir(savePathOrig)
 
 for k in delays :
     #Available subfolders (typically phase and coherence)
-    subfolds = [d for d in os.listdir(interfPath + k + "SW1") if os.path.isdir(interfPath + k + "SW1" + d)]
+    subfolds = [d for d in os.listdir(interfPath + k + "/SW1/") if os.path.isdir(interfPath + k + "/SW1/" + d)]
 
     #Select only shapefiles for the given delay
     delayShp = [f for f in shpFiles if k in f[f.rfind('/'):]]
@@ -78,7 +78,7 @@ for k in delays :
         #Apply extraction on each available band (typically coherence and phase)
         for subfold in subfolds :
             #Extract the interferogram corresponding to the current shapefile
-            im = [f for f in os.listdir(interfPath + k + "SW1" + subfold) if dateIm in f][0] 
+            im = [f for f in os.listdir(interfPath + k + "/SW1/" + subfold) if dateIm in f][0] 
 
             #Create sub-folder in the output directory for the given period of time
             checkDir(delayShpSavePath + dateIm, False)
@@ -89,7 +89,7 @@ for k in delays :
             path = delayShpSavePath + dateIm + '/' + subfold + '/'
 
             #Load image, rasterize the shapefile and extract coordinates of the moving areas
-            seg, image, maxis, segGlob = getImageReady(globalshapeFile, shp, interfPath + k + "SW1" + subfold + '/' + im, interfPath + k + "SW2" + subfold + '/' + im.replace("IW1", "IW2"))
+            seg, image, maxis, segGlob = getImageReady(globalshapeFile, shp, interfPath + k + "/SW1/" + subfold + '/' + im, interfPath + k + "/SW2/" + subfold + '/' + im.replace("IW1", "IW2"))
             seg = seg.astype("uint8")
             segGlob = segGlob.astype("uint8")
             

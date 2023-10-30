@@ -33,15 +33,16 @@ np.random.seed(seed)
 #########################################################
 
 #Path parameters
-pathInput = ""
-saveDir = ""
+pathInput = "/media/bralet/Elements/I-SSLIDE/ReadyToBeUsedDataset/"
+saveDir = "/media/bralet/Elements/DataToProcess/DESC/TestData/Checkpoints/"
+
 
 #Model parameters
-modelName = "DeepLabV3"
+modelName = "ResUNet"
 pretrained = False
 
 #Hyperparameters
-epochsNb = 300      #Number of epochs
+epochsNb = 10      #Number of epochs
 batchsize = 8       #Batch size
 lr = 0.00001        #Learning rate
 
@@ -54,7 +55,7 @@ device = "cuda" if (torch.cuda.is_available()) else "cpu"
 
 #Create a specific saving directory
 currDate = datetime.now()
-saveDir += str(currDate).replace(' ', '_') + "/"
+saveDir += str(currDate).replace(' ', '_').replace(":","__") + "/"
 checkDir(saveDir)
 
 
@@ -65,6 +66,8 @@ checkDir(saveDir)
 #Create training and evaluation datasets
 dataset_t = MA_Truth_Dataset(path1=pathInput)
 dataset_e = MA_Truth_Dataset(path1=pathInput, typedataset=1)
+
+print(len(dataset_t), len(dataset_e))
 
 #Create training and evaluation dataloaders
 dataloader_t = DataLoader(dataset_t, batch_size=batchsize, shuffle=True, num_workers=10)
@@ -104,8 +107,8 @@ loss = []       #Saving loss
 mets = []       #Saving metrics
 
 # Initial network performances
-meanLoss_T, meanMet_T = evaluation_routine(dataloader_t, model, lossToUse, device, 0)
-meanLoss_E, meanMet_E = evaluation_routine(dataloader_e, model, lossToUse ,device, 0)
+meanLoss_T, meanMet_T = evaluation_routine(dataloader_t, model, lossToUse, device)
+meanLoss_E, meanMet_E = evaluation_routine(dataloader_e, model, lossToUse ,device)
 loss.append([meanLoss_T, meanLoss_E])
 mets.append([meanMet_T, meanMet_E])
 
@@ -115,12 +118,12 @@ for epoch in range(epochsNb):
     print(f"\n***********\n* Epoch {epoch} *\n***********\n")
 
     # Training
-    meanLoss_T, meanMet_T = training_routine(dataloader_t, model, lossToUse, optimizer, device, epoch)
+    meanLoss_T, meanMet_T = training_routine(dataloader_t, model, lossToUse, optimizer, device)
     print(f"\tTotal Loss : {meanLoss_T}")
 
     # Evaluation
     print("\nEvaluation")
-    meanLoss_E, meanMet_E = evaluation_routine(dataloader_e, model, lossToUse, device, epoch)
+    meanLoss_E, meanMet_E = evaluation_routine(dataloader_e, model, lossToUse, device)
     print(f"\tTotal Loss : {meanLoss_E}")
 
     # Save loss and metrics for visualization

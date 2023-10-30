@@ -10,13 +10,13 @@ import os
 ######################################################
 
 #Path toward input images
-pathInput = ""
+pathInput = "/media/bralet/Elements/DataToProcess/DESC/TestData/S1Data/"
 #Path to the output folder to be created
-pathOutput = ""
+pathOutput = "/media/bralet/Elements/DataToProcess/DESC/TestData/Combined/"
 #Path to the SNAP graph to be computed
-pathSNAPGraph = ""
+pathSNAPGraph = "/home/bralet/Bureau/CleanedWorks/ISSLIDE/InterferogramsGeneration/graphs/MergeImages.xml"
 #Path to the gpt executable
-pathGPT = ""
+pathGPT = "/opt/snapSentinel/bin/gpt"
 
 ######################################################
 #                   INITIALIZATION                   #

@@ -52,7 +52,7 @@ def training_routine(dataloader, model, loss, optimizer, device):
         # Metrics computations
         met = np.zeros(5)
         for ii, ima in enumerate(res) :
-            met += getMetrics(ima, segms[ii].unsqueeze(1), device)
+            met += getMetrics(ima, segms[ii].unsqueeze(1))
         
         #Save metrics and loss
         allmets += met/ii
@@ -101,7 +101,7 @@ def evaluation_routine(dataloader, model, losses, device):
         # Metrics calculations        
         met = np.zeros(5)
         for ii, ima in enumerate(res) :
-            met += getMetrics(ima, segms[ii].unsqueeze(1), device)
+            met += getMetrics(ima, segms[ii].unsqueeze(1))
         
         # Save
         allmets += met/ii

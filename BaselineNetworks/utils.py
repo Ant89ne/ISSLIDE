@@ -13,7 +13,7 @@ def checkDir(path):
     #Check if the path exists
     if os.path.exists(path):
         #Remove the path if it exists
-        shutil.rmtree(path)    
+        shutil.rmtree(path)
     #Recreate it empty
     os.mkdir(path)
 

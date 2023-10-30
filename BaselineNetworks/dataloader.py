@@ -23,7 +23,7 @@ class MA_Truth_Dataset(Dataset):
         self.keepOnes()
         
         #Test image ready and extract image shape
-        imgTestName = self.dictSegImages[self.keys[0]][0]
+        imgTestName = self.imgs[0]
         imgTest = rio.open_rasterio(imgTestName).data
         self.sizeZone = imgTest.shape
 
@@ -33,8 +33,8 @@ class MA_Truth_Dataset(Dataset):
         """
 
         #Read segmentation files in reverse order
-        for s in range(len(self.segs), -1, -1) :
-            segIm = rio.open_rasterio(self.seg[s]).data
+        for s in range(len(self.segs)-1, -1, -1) :
+            segIm = rio.open_rasterio(self.segs[s]).data
 
             #Remove filename if no actual move in the segmentation
             if not 1 in segIm :
@@ -61,9 +61,9 @@ class MA_Truth_Dataset(Dataset):
 
             #Avoid Queyras zone for the training and reserve it for testing
             if self.typedataset : 
-                zones = [z for z in zones if "Bottom" in z] 
+                zones = [z for z in zones if "Queyras" in z] 
             else : 
-                zones = [z for z in zones if "Bottom" not in z]
+                zones = [z for z in zones if "Queyras" not in z]
 
             for z in zones :
                 zoneDelayPath = delayPath + z + "/"
@@ -90,9 +90,9 @@ class MA_Truth_Dataset(Dataset):
                     segs = [ interfSegPath + f for f in os.listdir(interfSegPath) if f.endswith('.tif')]
                     segs.sort()
                 
-                #Add the moves to all the moves available for the dataset
-                self.imgs += imgs
-                self.segs += segs
+                    #Add the moves to all the moves available for the dataset
+                    self.imgs += imgs
+                    self.segs += segs
 
                     
     def __len__(self):
