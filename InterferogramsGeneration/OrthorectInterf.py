@@ -13,13 +13,13 @@ from utils import date_sort, checkDir
 ######################################################
 
 #Path toward input images
-pathInput = "/media/bralet/Elements/DataToProcess/DESC/TestData/Interfs_1_12/"
+pathInput = ""
 #Path to the output folder to be created
-pathOutput = "/media/bralet/Elements/DataToProcess/DESC/TestData/Ortho_1_12/"
+pathOutput = ""
 #Path to the SNAP graph to be computed
-pathSNAPGraph = "/home/bralet/Bureau/CleanedWorks/ISSLIDE/InterferogramsGeneration/graphs/OrthorectGraph.xml"
+pathSNAPGraph = ""
 #Path to the gpt executable
-pathGPT = "/opt/snapSentinel/bin/gpt"
+pathGPT = ""
 
 ######################################################
 #                   INITIALIZATION                   #

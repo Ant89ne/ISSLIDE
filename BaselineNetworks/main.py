@@ -33,8 +33,8 @@ np.random.seed(seed)
 #########################################################
 
 #Path parameters
-pathInput = "/media/bralet/Elements/I-SSLIDE/ReadyToBeUsedDataset/"
-saveDir = "/media/bralet/Elements/DataToProcess/DESC/TestData/Checkpoints/"
+pathInput = ""
+saveDir = ""
 
 
 #Model parameters

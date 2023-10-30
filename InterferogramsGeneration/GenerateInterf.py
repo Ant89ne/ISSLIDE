@@ -13,13 +13,13 @@ from utils import date_sort, checkDir
 ######################################################
 
 #Path toward input images
-pathInput = "/media/bralet/Elements/DataToProcess/DESC/TestData/Combined/Swath1/"
+pathInput = ""
 #Path to the output folder to be created
-pathOutput = "/media/bralet/Elements/DataToProcess/DESC/TestData/Interfs_1_12/"
+pathOutput = ""
 #Path to the SNAP graph to be computed
-pathSNAPGraph = "./graphs/InterfGraphSingleSwath.xml"
+pathSNAPGraph = ""
 #Path to the gpt executable
-pathGPT = "/opt/snapSentinel/bin/gpt"
+pathGPT = ""
 #Swath to be computed (one by one for memory issues)
 swath = 1
 #Delay between two radar images on which to compute interferogram

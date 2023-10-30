@@ -13,13 +13,13 @@ from tqdm import tqdm
 #########################################################
 
 #Path to the folder with all Interferograms
-interfPath = "/home/bralet/NAS/Bralet/I-SSLIDE/RawDataset/Interferograms/"
+interfPath = ""
 #Path to the folder with all Shapefiles
-shpPathAll = "/home/bralet/NAS/Bralet/I-SSLIDE/RawDataset/ShapeFiles/"
+shpPathAll = ""
 #Path to a pre-computed global shapefile
-GlobshpPathAll = "/home/bralet/NAS/Bralet/I-SSLIDE/RawDataset/ShapeFiles/AllInOne/" 
+GlobshpPathAll = "" 
 #Output folder
-savePathOrig = "/media/bralet/Elements/DataToProcess/DESC/TestData/ExtractMoves/"
+savePathOrig = ""
 
 #########################################################
 #                  INITIALIZATION                       #
