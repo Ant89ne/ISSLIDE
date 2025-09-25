@@ -83,7 +83,7 @@ Ensure to complete "User Parameters" in the main file and run the following line
 
 If this work was useful for you, please ensure citing our works :
 
-ISSLIDE: A New InSAR Dataset for Slow SLIding Area DEtection With Machine Learning, Bralet, A., Trouvé, E., Chanussot, J., & Atto, A. M., in IEEE Geoscience and Remote Sensing Letters, vol. 21, pp. 1-5, 2024, Art no. 3001005, doi: 10.1109/LGRS.2024.3365299.
+<i> ISSLIDE: A New InSAR Dataset for Slow SLIding Area DEtection With Machine Learning, Bralet, A., Trouvé, E., Chanussot, J., & Atto, A. M., in IEEE Geoscience and Remote Sensing Letters, vol. 21, pp. 1-5, 2024, Art no. 3001005, doi: 10.1109/LGRS.2024.3365299.</i>
 
 Thank you for your support
 
