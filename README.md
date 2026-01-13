@@ -7,7 +7,7 @@ We here release the three steps of the generation of ISSLIDE :
 * Moving areas patch extraction;
 * Segmentation with standard methods from the literature.
 
-Each step is detailed hereinafter. The codes are were running with Python 3.9.6 with the environnment detailed in the requirement.txt file.
+Each step is detailed hereinafter. The codes are were running with Python 3.9.6 with the environnment detailed in the requirement.txt file. Please note that the librairy GDAL requires that you first install GDAL on your machine (https://gdal.org/en/stable/download.html).
 
 The ISSLIDE dataset is available on [IEEEDataport](https://ieee-dataport.org/documents/isslide-insar-dataset-slow-sliding-area-detection-machine-learning).
 
