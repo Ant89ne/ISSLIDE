@@ -9,7 +9,7 @@ cycler==0.12.1
 filelock==3.19.1
 fonttools==4.60.2
 fsspec==2025.10.0
-GDAL==3.12.1
+GDAL==3.11.3
 ImageIO==2.37.2
 importlib_metadata==8.7.1
 importlib_resources==6.5.2
