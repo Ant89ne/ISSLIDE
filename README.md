@@ -17,6 +17,21 @@ One can find the paper relative to this dataset in [ISSLIDE: A new InSAR dataset
 
 The generation of the interferograms is three steps:
 
+## Converting images from SAFE format to BEAM-DIMAP format
+
+The proposed code is running with images saved under a BEAM-DIMAP format. Yet when downloading images from <a href="https://browser.dataspace.copernicus.eu/"> Copernicus Browser </a>, they are automatically saved using the SAFE format. To perform the conversion please follow the following guidelines.
+
+Keep the downloaded images under an archive format ; GPT is able to process .zip. 
+
+Make sure to complete the "User Parameters" in the file "ConvertZipToBeam.py", specifying "TransformFormat.xml" as graph. 
+
+Run the following lines:
+
+```python
+python3 ./InterferogramsGeneration/ConvertZipToBeam.py 
+```
+
+
 ## Combining SAR images acquired at the same date
 
 For large studied areas as in the dataset, it can be necessary to combine several SAR images before generating interferogras. For memory issues, the combined images are divided by swaths and combined.
