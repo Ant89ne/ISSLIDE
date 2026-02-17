@@ -5,6 +5,7 @@
     <sources/>
     <parameters class="com.bc.ceres.binding.dom.XppDomElement">
       <file>${product1}</file>
+      <copyMetadata>true</copyMetadata>
     </parameters>
   </node>
   <node id="Read(2)">
@@ -12,6 +13,7 @@
     <sources/>
     <parameters class="com.bc.ceres.binding.dom.XppDomElement">
       <file>${product2}</file>
+      <copyMetadata>true</copyMetadata>
     </parameters>
   </node>
   <node id="TOPSAR-Split">
@@ -48,7 +50,7 @@
     <parameters class="com.bc.ceres.binding.dom.XppDomElement">
       <orbitType>Sentinel Precise (Auto Download)</orbitType>
       <polyDegree>3</polyDegree>
-      <continueOnFail>false</continueOnFail>
+      <continueOnFail>true</continueOnFail>
     </parameters>
   </node>
   <node id="Apply-Orbit-File(2)">
@@ -59,7 +61,7 @@
     <parameters class="com.bc.ceres.binding.dom.XppDomElement">
       <orbitType>Sentinel Precise (Auto Download)</orbitType>
       <polyDegree>3</polyDegree>
-      <continueOnFail>false</continueOnFail>
+      <continueOnFail>true</continueOnFail>
     </parameters>
   </node>
   <node id="Back-Geocoding">
@@ -100,6 +102,8 @@
       <externalDEMNoDataValue>0.0</externalDEMNoDataValue>
       <externalDEMApplyEGM/>
       <tileExtensionPercent>100</tileExtensionPercent>
+      <outputFlatEarthPhase>false</outputFlatEarthPhase>
+      <outputTopoPhase>false</outputTopoPhase>
       <outputElevation>false</outputElevation>
       <outputLatLon>false</outputLatLon>
     </parameters>
@@ -181,8 +185,11 @@
     </sources>
     <parameters class="com.bc.ceres.binding.dom.XppDomElement">
       <selectedPolarisations/>
+      <selectedSubImages/>
       <sourceBands/>
       <bandNamePattern>coh.*|i.*|q.*</bandNamePattern>
+      <sourceMasks/>
+      <includeReferences>false</includeReferences>
     </parameters>
   </node>
   <node id="Write">

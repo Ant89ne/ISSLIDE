@@ -1,0 +1,21 @@
+{
+    "dataPaths":{
+        "pathInput": "/Users/antoinebralet/Datasets/TestInterferos/RawData/",
+        "pathSplitSwath": "/Users/antoinebralet/Datasets/TestInterferos/Splitted/",
+        "pathInterfero": "/Users/antoinebralet/Datasets/TestInterferos/Interf/",
+        "pathOrtho": "/Users/antoinebralet/Datasets/TestInterferos/Ortho/"
+    },
+    
+    "graphs":{
+        "graphSplit":"/Users/antoinebralet/Desktop/Research/Code/ISSLIDE/InterferogramsGeneration/graphs2/SplitSwaths.xml",
+        "graphInterf": "/Users/antoinebralet/Desktop/Research/Code/ISSLIDE/InterferogramsGeneration/graphs/InterfGraphSingleSwath.xml",
+        "graphOrtho": "/Users/antoinebralet/Desktop/Research/Code/ISSLIDE/InterferogramsGeneration/graphs/OrthorectGraph.xml"
+    },
+    
+    "gpt":"/Applications/esa-snap/bin/gpt",
+
+    "swaths": [1,2,3],
+
+    "delay": 6
+
+}

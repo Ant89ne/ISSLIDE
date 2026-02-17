@@ -23,4 +23,4 @@ def checkDir(path):
     #Check if the path exists
     if not os.path.exists(path):
         #Recreate it empty
-        os.mkdir(path)
+        os.makedirs(path)
