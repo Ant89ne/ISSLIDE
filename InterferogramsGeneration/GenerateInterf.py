@@ -70,7 +70,6 @@ for s in config["swaths"]:
         #Configuration of user parameters
         outputName = f'{pathOutput}/ifg_IW{swath}_VV_{i}_{i+deltat}.dim'
         userParams = [pathInput + liste_imgs_org[i], pathInput + liste_imgs_org[i+deltat], outputName, f"IW{swath}", f"IW{swath}"]
-        print(userParams)
         
         #Prepare command line
         comParams = ""
