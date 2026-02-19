@@ -3,7 +3,7 @@ import os
 
 def date_sort(listImgs):
     """
-    Sort filenames in liste by date if date included in filename
+    Sort filenames in list by date if date included in filename
     """
 
     a = zip([f[3:] for f in listImgs], listImgs)

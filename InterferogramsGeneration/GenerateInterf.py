@@ -28,9 +28,9 @@ with open(args.config) as json_file:
 
 for s in config["swaths"]:
     #Path toward input images
-    pathInput = config["dataPaths"]["pathSplitSwath"] + f"Swath{s}/"
+    pathInput = os.path.join(config["dataPaths"]["pathSplitSwath"], f"SW{s}")
     #Path to the output folder to be created
-    pathOutput = config["dataPaths"]["pathInterfero"] + f"Swath{s}/"
+    pathOutput = os.path.join(config["dataPaths"]["pathInterfero"], f"{config["delay"]}days", f"SW{s}/")
     #Path to the SNAP graph to be computed
     pathSNAPGraph = config["graphs"]["graphInterf"]
     #Path to the gpt executable
@@ -68,8 +68,8 @@ for s in config["swaths"]:
 
     for i in range(0, len(liste_imgs_org)-deltat, deltat):
         #Configuration of user parameters
-        outputName = f'{pathOutput}/ifg_IW{swath}_VV_{i}_{i+deltat}.dim'
-        userParams = [pathInput + liste_imgs_org[i], pathInput + liste_imgs_org[i+deltat], outputName, f"IW{swath}", f"IW{swath}"]
+        outputName = os.path.join(pathOutput, f'ifg_IW{swath}_VV_{i}_{i+deltat}.dim')
+        userParams = [os.path.join(pathInput, liste_imgs_org[i]), os.path.join(pathInput, liste_imgs_org[i+deltat]), outputName, f"IW{swath}", f"IW{swath}"]
         
         #Prepare command line
         comParams = ""

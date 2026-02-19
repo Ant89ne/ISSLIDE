@@ -1,0 +1,46 @@
+<graph id="Graph">
+  <version>1.0</version>
+  <node id="Read">
+    <operator>Read</operator>
+    <sources/>
+    <parameters class="com.bc.ceres.binding.dom.XppDomElement">
+      <file>${file1}</file>
+      <copyMetadata>true</copyMetadata>
+      <bandNames/>
+      <maskNames/>
+    </parameters>
+  </node>
+  <node id="TOPSAR-Split">
+    <operator>TOPSAR-Split</operator>
+    <sources>
+      <sourceProduct refid="Read"/>
+    </sources>
+    <parameters class="com.bc.ceres.binding.dom.XppDomElement">
+      <subswath>${swathNb}</subswath>
+      <selectedPolarisations>VV</selectedPolarisations>
+      <wktAoi/>
+    </parameters>
+  </node>
+  <node id="Write">
+    <operator>Write</operator>
+    <sources>
+      <sourceProduct refid="TOPSAR-Split"/>
+    </sources>
+    <parameters class="com.bc.ceres.binding.dom.XppDomElement">
+      <file>${outputName}</file>
+      <formatName>BEAM-DIMAP</formatName>
+    </parameters>
+  </node>
+  <applicationData id="Presentation">
+    <Description/>
+    <node id="Read">
+            <displayPosition x="96.0" y="113.0"/>
+    </node>
+    <node id="TOPSAR-Split">
+      <displayPosition x="268.0" y="109.0"/>
+    </node>
+    <node id="Write">
+            <displayPosition x="460.0" y="113.0"/>
+    </node>
+  </applicationData>
+</graph>

@@ -40,16 +40,15 @@ pathGPT = config["gpt"]
 #                   INITIALIZATION                   #
 ######################################################
 for s in config["swaths"]:
-    pathInput = pathInputGlob + f"/Swath{s}/"
-    pathOutput = pathOutputGlob + f"/Swath{s}/"
+    pathInput = os.path.join(pathInputGlob, f"{config["delay"]}days", f"SW{s}")
+    pathOutput = os.path.join(pathOutputGlob, f"{config["delay"]}days", f"SW{s}")
 
     # Find and sort interferograms to orthorectify
     liste_imgs_org = [e for e in os.listdir(pathInput) if e.endswith(".dim")]
     liste_imgs_org.sort()
 
     #Create subfolders in the output directory
-    outputSubfolders = [f'{pathOutput}/phase/',f'{pathOutput}/coherence/']
-    checkDir(pathOutput)
+    outputSubfolders = [os.path.join(pathOutput, "phase"), os.path.join(pathOutput, "coherence")]
     for k in outputSubfolders :
         checkDir(k)
 
@@ -64,16 +63,16 @@ for s in config["swaths"]:
 
         #Configuration of user parameters
         extensions = ["_pha", "_coh"]
-        userParams = [pathInput + liste_imgs_org[i]]
+        userParams = [os.path.join(pathInput, liste_imgs_org[i])]
 
         #Get band name within the .data folder (may be different from the actual filename)
-        bands = [k for k in os.listdir(pathInput + liste_imgs_org[i][:-3] + "data") if k.startswith("coh_")][0]
+        bands = [k for k in os.listdir(os.path.join(pathInput,liste_imgs_org[i][:-3] + "data")) if k.startswith("coh_")][0]
         bName = bands[bands.find('_')+1:bands.rfind('.')]
         userParams += [bName]
 
         for k, ext in enumerate(extensions) :
-            outFilePath = outputSubfolders[k] + liste_imgs_org[i][:-4]
-            userParams.append(outFilePath + ext + ".tif")
+            outFilePath = os.path.join(outputSubfolders[k], bName + ext + ".tif") #liste_imgs_org[i][:-4]
+            userParams.append(outFilePath)
 
         #Prepare command line
         comParams = ""

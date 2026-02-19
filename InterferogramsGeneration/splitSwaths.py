@@ -52,16 +52,16 @@ gptConfigParams = ["swathNb", "file1", "outputName"]
 
 for k in range(0, len(allFiles)):
     #Get the two images to be combined
-    file1 = pathInput + allFiles[k]
+    file1 = os.path.join(pathInput, allFiles[k])
 
     #Combine swaths one by one
     for s in config["swaths"]:
 
         #Create Swath specific folder
-        checkDir(pathOutput + f"Swath{s}/")
+        checkDir(os.path.join(pathOutput, f"SW{s}"))
 
         #Configuration of user parameters
-        values = [f"IW{s}", file1, pathOutput + f"Swath{s}/" + allFiles[k][:allFiles[k].rfind('.')]+ "_IW" + str(s) + ".dim"]
+        values = [f"IW{s}", file1, os.path.join(pathOutput, f"SW{s}", allFiles[k][:allFiles[k].rfind('.')]+ "_IW" + str(s) + ".dim")]
         
         #Prepare command line
         commandline = ""

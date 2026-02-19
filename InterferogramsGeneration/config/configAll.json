@@ -7,7 +7,7 @@
     },
     
     "graphs":{
-        "graphSplit":"/Users/antoinebralet/Desktop/Research/Code/ISSLIDE/InterferogramsGeneration/graphs2/SplitSwaths.xml",
+        "graphSplit":"/Users/antoinebralet/Desktop/Research/Code/ISSLIDE/InterferogramsGeneration/graphs/SplitSwaths.xml",
         "graphInterf": "/Users/antoinebralet/Desktop/Research/Code/ISSLIDE/InterferogramsGeneration/graphs/InterfGraphSingleSwath.xml",
         "graphOrtho": "/Users/antoinebralet/Desktop/Research/Code/ISSLIDE/InterferogramsGeneration/graphs/OrthorectGraph.xml"
     },
