@@ -57,6 +57,7 @@ for k in delays :
 
     #Extract move in every shapefile
     for i, shp in enumerate(tqdm(delayShp)) :
+        correctDate = False
         print( f"Processing {shp[shp.rfind('/')+1:-4]} shapeFile")
         
         #Get the zone of the current shapefile
@@ -78,7 +79,12 @@ for k in delays :
         #Apply extraction on each available band (typically coherence and phase)
         for subfold in subfolds :
             #Extract the interferogram corresponding to the current shapefile
-            im = [f for f in os.listdir(interfPath + k + "/SW1/" + subfold) if dateIm in f][0] 
+            im = [f for f in os.listdir(interfPath + k + "/SW1/" + subfold) if dateIm in f]
+            if len(im) :
+                im = im[0]
+                correctDate = True
+            else :
+                continue 
 
             #Create sub-folder in the output directory for the given period of time
             checkDir(delayShpSavePath + dateIm, False)
@@ -96,13 +102,13 @@ for k in delays :
             #Extract moving areas on the current band
             getMovingAreas(image, segGlob, path, maxis = maxis)
 
-        
-        #Create output segmentation directory for the current delay and zone
-        checkDir(delayShpSavePath + "Segmentations", False)
-        
-        #Create output segmentation folder for the current period
-        checkDir(delayShpSavePath + "Segmentations/" + dateIm)
+        if correctDate :
+            #Create output segmentation directory for the current delay and zone
+            checkDir(delayShpSavePath + "Segmentations", False)
+            
+            #Create output segmentation folder for the current period
+            checkDir(delayShpSavePath + "Segmentations/" + dateIm)
 
-        #Extract segmentation of the movements extracted
-        getMovingAreas(((seg>0)*1).astype("int8"), segGlob, delayShpSavePath + "Segmentations/" + dateIm + '/', maxis = maxis)
+            #Extract segmentation of the movements extracted
+            getMovingAreas(((seg>0)*1).astype("int8"), segGlob, delayShpSavePath + "Segmentations/" + dateIm + '/', maxis = maxis)
 
